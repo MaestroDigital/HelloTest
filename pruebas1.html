@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Material Design for Bootstrap</title>
+    <!-- MDB icon -->
+    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    />
+    <!-- MDB -->
+    <link rel="stylesheet" href="css/mdb.min.css" />
+
+    <link rel="stylesheet"
+      href="hightlight/styles/atom-one-light.min.css">
+    <script src="hightlight/highlight.min.js"></script>
+  </head>
+  <body style="background-color: darkgrey;">
+    <!-- Start your project here-->
+    <div class="container">
+      <div class="d-flex justify-content-center align-items-center" style="color:#677F91; padding-top:20px;">
+
+        <div>
+
+          <div class="card mb-3" style="max-width: 680px;" >
+            <h5 class="card-title" style="color:black;text-align: center;margin-top: 10px;">El prestamo</h5>
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light" style="max-width: 600px; margin:auto;">
+              <img src="img/banco.jpg" class="img-fluid"/>
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                La tabla de arriba representa los ahorros (en euros) depositados en un banco por sus clientes. Cada celda son los ahorros de un cliente.
+              </p>
+              <p class="card-text">
+                Debajo podemos ver a 4 clientes que nos indican en que celda se encuentras sus ahorros.
+              </p>
+              <p class="card-text">
+                Sí Paula y Ramón le dieran la mitad de sus ahorros a Lucía ¿Cuánto dinero tendrá Lucía?
+              </p>
+              <div style="padding-top:10px;">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" name="inlineRadioOptions" type="radio" id="inlineCheckbox1" value="15" onchange="handleChange(this);"/>
+                  <label class="form-check-label" for="inlineCheckbox1">15 Euros</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" name="inlineRadioOptions" type="radio" id="inlineCheckbox2" value="16" onchange="handleChange(this);"/>
+                  <label class="form-check-label" for="inlineCheckbox2">16 Euros</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" name="inlineRadioOptions" type="radio" id="inlineCheckbox3" value="27" onchange="handleChange(this);"/>
+                  <label class="form-check-label" for="inlineCheckbox3">27 Euros</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" name="inlineRadioOptions" type="radio" id="inlineCheckbox4" value="17" onchange="handleChange(this);"/>
+                  <label class="form-check-label" for="inlineCheckbox4">17 Euros</label>
+                </div>
+              </div>
+              <div style="text-align:right; padding-top:20px;">
+                <button type="button" class="btn btn-primary" id="btnComprobar" disabled onclick="comprobar()">Comprobar</button>
+              </div>
+            </div>
+          </div>
+
+        <div id="resultado" class="card" style="max-width: 680px; display:none; margin-bottom:10px;" >
+          <div class="card-body">
+            <h5 class="card-title"><span id="txtAcierto" style="color:green; display:none;">Es correcto.</span> <span id="txtFallo" style="color:red; display:none;">No es correcto.</span> El resutado es 16 Euros</h5>
+            <p class="card-text" style="margin-bottom: 4;">
+              Los ahorros de Paula están en la celda B2 y son 10 Euros.
+              <br><br>Los ahorros de Ramón están en la celda A1 y son 12 Euros.
+              <br><br>Si cada uno de ellos le da la mitad de lo que tienen a Lucía que tiene 5 Euros, lucía tendría 5 + 5 + 6 = 16 Euros.
+              <br><br>Los ordenadores son especialmente útiles para el manejo de estas estructura de datos, permitiéndono hacer este tipo de operaciones con volumenes ingentes de datos. Veamos como sería este ejemplo en un secillo programa:
+            </p>
+            <pre><code class="language-javascript" style="padding:0;">
+    var banco={A:[, 9, 304, 532, 54, 71],
+               B:[, 105, 10, 91, 5, 742],
+               C:[, 12, 307, 32, 915, 39]};
+    Paula=banco.B[2];
+    Ramon=banco.C[1];
+    Lucia=banco.B[4];
+    LuciaTendria = Lucia + Paula / 2 + Ramon / 2;
+    document.write("Lucía tendría " + LuciaTendria + " Euros");
+            </code></pre>
+            <div style="text-align:right;">
+              <button type="button" class="btn btn-primary" onclick="navegar('pruebas2.html')">Otra Pregunta</button>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+      </div>
+    </div>
+    <!-- End your project here-->
+
+    <!-- MDB -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript"></script>
+  </body>
+</html>
+
+
+<script>
+   function navegar(pagina) {
+       window.location = pagina;
+   }
+
+   function handleChange(){
+    document.getElementById("btnComprobar").disabled = false;
+    document.getElementById("btnComprobar").focus();
+   }
+
+   function comprobar(){
+
+    var radios = document.getElementsByName('inlineRadioOptions');
+
+    var valor="0";
+    for (var i = 0, length = radios.length; i < length; i++) {
+      if (radios[i].checked) {
+        valor=radios[i].value;
+        break;
+      }
+    }
+
+    if (valor=="16") {
+      document.getElementById("txtAcierto").style.display = 'inline';
+    } else {
+      document.getElementById("txtFallo").style.display = 'inline';
+    }
+    document.getElementById("btnComprobar").style.display = 'none';
+    document.getElementById('inlineCheckbox1').disabled = true;
+    document.getElementById('inlineCheckbox2').disabled = true;
+    document.getElementById('inlineCheckbox3').disabled = true;
+    document.getElementById('inlineCheckbox4').disabled = true;
+    document.getElementById("resultado").style.display = 'flex';
+    document.getElementById('resultado').scrollIntoView();
+   }
+
+   hljs.highlightAll();
+</script>
